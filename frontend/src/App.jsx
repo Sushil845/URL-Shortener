@@ -10,9 +10,12 @@ export default function App() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/api/short", {
-        originalUrl,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/short`,
+        {
+          originalUrl,
+        }
+      );
 
       setShortUrl(res.data);
     } catch (err) {
@@ -30,7 +33,6 @@ export default function App() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Main Card */}
       <div className="bg-white/80 backdrop-blur-md rounded-lg shadow-lg p-8 max-w-md w-full">
         <h1 className="text-3xl font-bold text-center mb-6 text-blue-600">
           URL Shortener
@@ -54,7 +56,6 @@ export default function App() {
           </button>
         </form>
 
-        {/* Result Area */}
         <div className="mt-6 min-h-[220px] flex flex-col items-center justify-center text-center">
           {shortUrl && (
             <>
